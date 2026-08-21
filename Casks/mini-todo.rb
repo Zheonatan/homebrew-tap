@@ -5,8 +5,7 @@ cask "mini-todo" do
   sha256 arm:   "fb9902463f56d29be20b38d22f8255de69ff995e1e2b1ecfa698beaa9e139ef8",
          intel: "cf50d1ff72141023be8dc8f8bc16a40b544eeac331121b87a24fe50a33eaa010"
 
-  url "https://github.com/Zheonatan/nocom/releases/download/v#{version}/Mini.To-Do_#{version}_#{arch}.dmg",
-      verified: "github.com/Zheonatan/nocom/"
+  url "https://github.com/Zheonatan/nocom/releases/download/v#{version}/Mini.To-Do_#{version}_#{arch}.dmg"
   name "Mini To-Do"
   desc "Lista de tarefas flutuante, sempre no topo, aberta por atalho global"
   homepage "https://github.com/Zheonatan/nocom"
@@ -17,7 +16,7 @@ cask "mini-todo" do
   end
 
   # Tauri v2 exige macOS 10.15 ou mais novo, apesar do 10.13 no Info.plist.
-  depends_on macos: ">= :catalina"
+  depends_on macos: :catalina
 
   app "Mini To-Do.app"
 
