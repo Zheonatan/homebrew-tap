@@ -49,9 +49,16 @@ brew upgrade --cask nocom
 
 ### Instalou quando o app se chamava `mini-todo`?
 
-O app mudou de nome na versão 0.2.0. Um `brew upgrade` faz a troca sozinho — o
-`brew` reconhece o nome antigo e migra para `nocom`. Suas tarefas vêm junto: a
-primeira abertura da versão nova copia tudo da pasta de dados anterior.
+O app mudou de nome na versão 0.2.0, e a troca é em dois passos:
+
+```sh
+brew uninstall --cask mini-todo
+brew install --cask nocom
+```
+
+Nessa ordem. O `uninstall` tira o `Mini To-Do.app` de `/Applications`; ele não
+apaga suas tarefas — elas ficam na pasta de dados, e a primeira abertura do
+NoCom copia tudo de lá.
 
 ### Desinstalar
 
