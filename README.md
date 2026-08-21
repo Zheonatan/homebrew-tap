@@ -9,10 +9,27 @@ um atalho de teclado. Sem conta, sem nuvem, sem sincronização.
 
 ```sh
 brew tap Zheonatan/tap
+brew trust --cask Zheonatan/tap/nocom
 brew install --cask nocom
 ```
 
 Funciona em Apple Silicon e em Intel — o `brew` escolhe a versão certa sozinho.
+
+### Por que o `brew trust`?
+
+Sem ele, o segundo comando falha assim:
+
+```
+Error: Refusing to load cask zheonatan/tap/nocom from untrusted tap zheonatan/tap.
+```
+
+Não é sinal de problema com o app. Desde o Homebrew 6, qualquer tap que não seja
+oficial precisa da sua confiança explícita, uma vez, antes do primeiro uso — é o
+`brew` te pedindo para conferir de quem você está instalando, e não uma falha.
+
+O comando acima confia **apenas neste cask**. Existe também `brew trust
+zheonatan/tap`, que confia no tap inteiro; a forma estreita é melhor, porque o
+que eu publicar aqui depois não entra de carona.
 
 ### Primeira vez: liberar o app
 
