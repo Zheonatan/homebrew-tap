@@ -2,26 +2,26 @@
 
 Instaladores dos meus apps para macOS, via [Homebrew](https://brew.sh).
 
-## Mini To-Do
+## NoCom
 
 Uma lista de tarefas que fica flutuando por cima do seu trabalho e aparece com
 um atalho de teclado. Sem conta, sem nuvem, sem sincronização.
 
 ```sh
 brew tap Zheonatan/tap
-brew install --cask mini-todo
+brew install --cask nocom
 ```
 
 Funciona em Apple Silicon e em Intel — o `brew` escolhe a versão certa sozinho.
 
 ### Primeira vez: liberar o app
 
-O Mini To-Do ainda não é assinado pela Apple, então o macOS vai dizer que **não
-foi possível verificar o app**. É esperado, e se resolve com um comando, uma
-única vez:
+O NoCom ainda não é assinado pela Apple, então o macOS vai dizer que **não foi
+possível verificar o app**. É esperado, e se resolve com um comando, uma única
+vez:
 
 ```sh
-xattr -dr com.apple.quarantine "/Applications/Mini To-Do.app"
+xattr -dr com.apple.quarantine "/Applications/NoCom.app"
 ```
 
 Depois disso ele abre normalmente, e as atualizações pelo `brew` não pedem mais
@@ -44,20 +44,26 @@ estiver ocupado na sua máquina.
 ### Atualizar
 
 ```sh
-brew upgrade --cask mini-todo
+brew upgrade --cask nocom
 ```
+
+### Instalou quando o app se chamava `mini-todo`?
+
+O app mudou de nome na versão 0.2.0. Um `brew upgrade` faz a troca sozinho — o
+`brew` reconhece o nome antigo e migra para `nocom`. Suas tarefas vêm junto: a
+primeira abertura da versão nova copia tudo da pasta de dados anterior.
 
 ### Desinstalar
 
 ```sh
-brew uninstall --cask mini-todo
+brew uninstall --cask nocom
 ```
 
 Suas tarefas continuam no disco depois de desinstalar. Para apagar tudo,
 inclusive elas:
 
 ```sh
-brew uninstall --zap --cask mini-todo
+brew uninstall --zap --cask nocom
 ```
 
 ## Links
