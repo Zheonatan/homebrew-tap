@@ -20,18 +20,33 @@ cask "nocom" do
 
   app "NoCom.app"
 
-  # O app ainda não é assinado com Developer ID: sem isso o Gatekeeper marca o
-  # binário como não verificado e a primeira abertura falha. O caveat abaixo
-  # existe até a notarização entrar no build.
+  # O app não é assinado com Developer ID -- a assinatura é ad-hoc, que basta para
+  # executar mas não para o Gatekeeper avaliar. Somada à quarentena que o `brew`
+  # carimba, o macOS não diz "não foi possível verificar": diz que o app **está
+  # danificado**, e oferece "Mover para o Lixo" como o botão de cima.
+  #
+  # É por isso que este caveat existe e é tão explícito. Quem lê "danificado"
+  # conclui que o download veio corrompido, e o caminho mais óbvio na tela apaga o
+  # app. O texto precisa chegar antes do diálogo -- e chega: o `brew` imprime o
+  # caveat ao terminar de instalar, segundos antes da primeira abertura.
+  #
+  # E repete a cada `upgrade`, porque o `brew` recarimba em toda instalação e
+  # desde o Homebrew 6 não há como desligar: o `--no-quarantine` foi removido sem
+  # substituto. Sai daqui quando a notarização entrar no build.
   caveats do
     <<~EOS
-      O NoCom ainda não é assinado pela Apple. Na primeira vez, o macOS vai dizer
-      que o app não pôde ser verificado. Para liberar, rode uma vez:
+      O NoCom ainda não é assinado pela Apple.
+
+      Na primeira abertura o macOS vai dizer que o app "está danificado e não
+      pode ser aberto", e oferecer "Mover para o Lixo". Ele NÃO está danificado:
+      é o Gatekeeper reclamando da assinatura, e esse botão apaga o app.
+
+      Clique em Cancelar, e tire a marca de quarentena:
 
         xattr -dr com.apple.quarantine "/Applications/NoCom.app"
 
-      Depois disso ele abre normalmente, e as atualizações via brew não pedem
-      nada de novo.
+      Rode isso de novo depois de cada 'brew upgrade --cask nocom'. Atualizando
+      pelo botão de dentro do app não é necessário.
     EOS
   end
 
