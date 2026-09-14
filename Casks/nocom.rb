@@ -1,9 +1,9 @@
 cask "nocom" do
   arch arm: "aarch64", intel: "x64"
 
-  version "0.5.0"
-  sha256 arm:   "6f498261a88005633f19cfdee7d335cbfa3571f438202d6a5336a9d33a661942",
-         intel: "0c80001ad6f74c5e1f67364b63388704ca2d45a8df1fc996d771ef7afa8f7cba"
+  version "0.6.0"
+  sha256 arm:   "7f6e744ea5bf2154ba7ee7fe745d515fed16247e01b4f1bc9cf4899e930e3b94",
+         intel: "5f884d0448d1e2441628be8ab6acc4e83582543a47a71e525f59d04d9cb3745c"
 
   url "https://github.com/Zheonatan/nocom/releases/download/v#{version}/NoCom_#{version}_#{arch}.dmg"
   name "NoCom"
